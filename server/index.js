@@ -26,6 +26,9 @@ app.use(cors())
 //seend message route
 app.use('/messages', messagesRouter);
 
+app.get('/',  (req,res) => {
+  res.send('Helo Server')
+})
 // Start server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
