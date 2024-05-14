@@ -1,4 +1,15 @@
-import { Camera, Lock, MessageCircle, Share2, SquarePen } from 'lucide-react'
+import {
+  Camera,
+  ChevronLeft,
+  EllipsisVertical,
+  KeyRound,
+  Lock,
+  MessageCircle,
+  Share2,
+  SquarePen,
+  Theater,
+  X,
+} from 'lucide-react'
 
 const Sidebar = () => {
   return (
@@ -8,7 +19,49 @@ const Sidebar = () => {
         alt=''
         className='h-[50vh] w-[100%] drop-shadow-2xl'
       />
-      {/* <div className=' shadow-inner z-50 bg-slate-50   h-[50vh] w-[22.5vw] absolute top-[10%] left-[0%]'></div> */}
+      <div className='bg-gradient-to-b from-black to-transparent z-10 absolute top-[10%] left-[0%] max-h-[6vh] w-[25.5vw]'>
+        <div className='flex justify-between'>
+          <div className='flex'>
+            <div className='flex'>
+              <ChevronLeft className='text-white' />
+              <p className='text-[15px] text-white'>Chats</p>
+            </div>
+            <div className='ml-2 flex items-center'>
+              <p className='text-white'>
+                img:<span className='text-[15px] text-[#252525] ml-1'>0</span>
+              </p>
+              <p className='text-[15px] text-white'>msg</p>
+            </div>
+          </div>
+          <div className='flex gap-2'>
+            <div>
+              <EllipsisVertical className='text-[white]' />
+            </div>
+            <div>
+              <KeyRound className='text-white' />
+            </div>
+            <div>
+              <Theater className='text-white' />
+            </div>
+            <div>
+              <SquarePen className='text-white' />
+            </div>
+            <div>
+              <X className='text-white' />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='bg-gradient-to-t from-black to-transparent z-10 absolute top-[54%] left-[0%] max-h-[6vh] w-[25.5vw]'>
+        <div className='mb-5'>
+          <p className='font-bold text-[20px] text-[#fff] ml-5'>
+            Jessica Anderson
+          </p>
+          <p className='font-bold text-[12px] text-[#fff] ml-5'>
+            @jessica-anderson-2
+          </p>
+        </div>
+      </div>
       <div className='h-[40vh] flex flex-col bg-gradient-to-r from-[#4c1123] to-[#6d1931]'>
         <div className='flex justify-between  h-[5vh] bg-[#000] m-5 rounded-md'>
           <div className='mx-5 flex  gap-1'>

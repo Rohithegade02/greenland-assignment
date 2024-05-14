@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import messagesRouter from './routes/message.js'
-
+import cors from 'cors';
 //create express app
 const app = express();
 
@@ -22,6 +22,7 @@ connection.once('open', () => {
 });
 
 app.use(express.json());
+app.use(cors())
 //seend message route
 app.use('/messages', messagesRouter);
 

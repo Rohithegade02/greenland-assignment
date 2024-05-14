@@ -1,15 +1,11 @@
 import { Send } from 'lucide-react'
 import { useState } from 'react'
-import { Cursor, Typewriter } from 'react-simple-typewriter'
+import { Typewriter } from 'react-simple-typewriter'
 import Switch from 'react-switch'
-
-const OPENROUTER_API_KEY =
-  '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'
 
 const Chat = () => {
   const [textMessage, setTextMessage] = useState('')
   const [messages, setMessages] = useState([])
-  // const [showCursor, setShowCursor] = useState(true)
   const [isText, setIsText] = useState(false)
 
   const sendMessage = async () => {
@@ -18,7 +14,7 @@ const Chat = () => {
       {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+          Authorization: `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -41,11 +37,10 @@ const Chat = () => {
       message: receivedMessage,
     }
 
-    // Update the messages state with the user's message first
+    // setMessage sets the messages state with the user's message first
     setMessages(prevMessages => [...prevMessages, newMessage])
 
     if (assistantMessage.message) {
-      // POST the message to your backend
       fetch('http://localhost:4000/messages/new', {
         method: 'POST',
         headers: {
@@ -58,7 +53,6 @@ const Chat = () => {
       })
     }
 
-    // Then, add the received message to the messages state
     setMessages(prevMessages => [...prevMessages, assistantMessage])
     setTextMessage('')
   }

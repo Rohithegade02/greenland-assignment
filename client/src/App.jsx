@@ -10,6 +10,7 @@ function App() {
         <div className='flex-[0.35] '>
           <Sidebar />
         </div>
+        <div className='bg-[#D32D5E] w-[5px]'></div>
         <div className='flex-1'>
           <Chat />
         </div>
