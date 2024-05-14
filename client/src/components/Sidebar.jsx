@@ -13,7 +13,7 @@ import {
 
 const Sidebar = () => {
   return (
-    <div className=' '>
+    <div>
       <img
         src='/old-lady.jpg'
         alt=''
@@ -30,7 +30,7 @@ const Sidebar = () => {
               <p className='text-white'>
                 img:<span className='text-[15px] text-[#252525] ml-1'>0</span>
               </p>
-              <p className='text-[15px] text-white'>msg</p>
+              <p className='text-[15px] ml-2 text-white'>msg</p>
             </div>
           </div>
           <div className='flex gap-2'>
@@ -126,7 +126,7 @@ const Sidebar = () => {
         </div>
         <div className='h-[30vh] text-white px-5 py-2 bg-black mx-5 rounded-md'>
           <div className='flex gap-10'>
-            <div className='flex flex-col   '>
+            <div className='flex flex-col'>
               <div>
                 <p className='font-bold flex text-[14px]'>Who I Am</p>
               </div>

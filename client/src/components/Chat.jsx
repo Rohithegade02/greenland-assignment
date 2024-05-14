@@ -9,6 +9,15 @@ const Chat = () => {
   const [isText, setIsText] = useState(false)
 
   const sendMessage = async () => {
+    const newMessage = {
+      sender: 'user',
+      message: textMessage,
+    }
+    // setMessage sets the messages state with the user's message first
+    setMessages(prev => [...prev, newMessage])
+    setTextMessage('')
+
+    // Send textMessage to OpenRouter to get the assistant's response
     const response = await fetch(
       'https://openrouter.ai/api/v1/chat/completions',
       {
@@ -18,7 +27,7 @@ const Chat = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'gryphe/mythomist-7b:free',
+          model: 'gryphe/mythomist-7b:free', //used gryphe/mythomist-7b model
           messages: [{ role: 'user', content: textMessage }],
         }),
       },
@@ -27,21 +36,13 @@ const Chat = () => {
     const data = await response.json()
     const receivedMessage = data.choices[0].message.content
 
-    const newMessage = {
-      sender: 'user',
-      message: textMessage,
-    }
-
     const assistantMessage = {
       sender: 'assistant',
       message: receivedMessage,
     }
 
-    // setMessage sets the messages state with the user's message first
-    setMessages(prevMessages => [...prevMessages, newMessage])
-
     if (assistantMessage.message) {
-      fetch('http://localhost:4000/messages/new', {
+      fetch(`${import.meta.env.VITE_SERVER_URL}/messages/new`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,9 +53,8 @@ const Chat = () => {
         }),
       })
     }
-
-    setMessages(prevMessages => [...prevMessages, assistantMessage])
-    setTextMessage('')
+    // setting all assistant message
+    setMessages(prev => [...prev, assistantMessage])
   }
 
   const handleSubmit = e => {
@@ -114,7 +114,7 @@ const Chat = () => {
                   padding: '10px',
                 }}
               >
-                <Typewriter
+                <Typewriter //used typewriter for assistant message
                   words={[message.message]}
                   typewriter={
                     <span style={{ color: 'white', fontFamily: 'monospace' }} />
